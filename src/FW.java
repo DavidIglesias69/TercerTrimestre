@@ -10,7 +10,7 @@ public static void main(String[] args) throws IOException {
 	char [] array = {'H','o', 'l','a'};
 	
 	try {
-		FileWriter fw = new FileWriter("C:\\Users\\alumno\\Desktop\\nuevo.txt");
+		FileWriter fw = new FileWriter("C:\\Users\\dic43\\OneDrive\\Escritorio\\nuevo.txt");
 		fw.write((array));
 		fw.write(" puedes poner lo que quieras ");
 		fw.flush();
@@ -23,7 +23,7 @@ public static void main(String[] args) throws IOException {
 	}
 	
 	try {
-		FileWriter fw = new FileWriter("C:\\Users\\alumno\\Desktop\\nuevo.txt");
+		FileWriter fw = new FileWriter("C:\\Users\\dic43\\OneDrive\\Escritorio\\nuevo.txt");
 		BufferedWriter buffer= new BufferedWriter(fw);
 		buffer.write((array));
 		buffer.write(" puedes poner lo que quieras dhhtr");
@@ -36,7 +36,7 @@ public static void main(String[] args) throws IOException {
 		e.printStackTrace();
 	}
 	try {
-		FileReader fr = new FileReader("C:\\Users\\alumno\\Desktop\\nuevo.txt");
+		FileReader fr = new FileReader("C:\\Users\\dic43\\OneDrive\\Escritorio\\nuevo.txt");
 		int i;
 		while ((i= fr.read()) != -1) {
 			System.out.println((char) i);
@@ -48,7 +48,7 @@ public static void main(String[] args) throws IOException {
 	}
 	
 	try {
-		FileReader frr = new FileReader("C:\\Users\\alumno\\Desktop\\nuevo.txt");
+		FileReader frr = new FileReader("C:\\Users\\dic43\\OneDrive\\Escritorio\\nuevo.txt");
 		BufferedReader brr = new BufferedReader(frr);
 		
 		while (brr.readLine() != null) {
@@ -62,7 +62,7 @@ public static void main(String[] args) throws IOException {
 	}
 	
 	try {
-		FileReader frr = new FileReader("C:\\Users\\alumno\\Desktop\\nuevo.txt");
+		FileReader frr = new FileReader("C:\\Users\\dic43\\OneDrive\\Escritorio\\nuevo.txt");
 		LineNumberReader lrn =new LineNumberReader(frr);
 		System.out.println(lrn.getLineNumber() +"-"+lrn.readLine());
 		lrn.setLineNumber(3);

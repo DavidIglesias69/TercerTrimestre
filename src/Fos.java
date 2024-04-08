@@ -3,8 +3,8 @@ import java.util.Random;
 
 public class Fos {
     public static void main(String[] args) {
-        String archivoOrigen = "C:\\Users\\alumno\\Desktop\\archivo_origen.txt";
-        String archivoDestino = "C:\\Users\\alumno\\Desktop\\archivo_destino.txt";
+        String archivoOrigen = "\"C:\\\\Users\\\\dic43\\\\OneDrive\\\\Escritorio\\\\archivo_origen.txt";
+        String archivoDestino = "C:\\Users\\dic43\\OneDrive\\Escritorio\\archivo_destino.txt";
         int longitudFrase = 100; // Longitud de la frase aleatoria
 
         try {
