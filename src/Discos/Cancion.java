@@ -1,5 +1,4 @@
-package discos;
-import java.util.ArrayList;
+package Discos;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;

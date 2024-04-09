@@ -1,4 +1,4 @@
-package discos;
+package Discos;
 
 import java.util.List;
 import java.util.Scanner;
