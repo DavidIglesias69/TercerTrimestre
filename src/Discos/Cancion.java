@@ -1,4 +1,4 @@
-package es.juana.ser;
+package Discos;
 
 import java.io.Serializable;
 
