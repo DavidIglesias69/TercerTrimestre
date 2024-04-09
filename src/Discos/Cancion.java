@@ -1,26 +1,37 @@
-package Discos;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Scanner;
-import java.io.*;
-import java.util.List;
-public class Cancion {
-	private String titulo;
-    private double duracion;
+package es.juana.ser;
 
-    public Cancion(String titulo, double duracion) {
-        this.titulo = titulo;
-        this.duracion = duracion;
-    }
+import java.io.Serializable;
 
-    public String getTitulo() {
-        return titulo;
-    }
+public class Cancion implements Serializable{
 
-    public double getDuracion() {
-        return duracion;
-    }
+
+	private static final long serialVersionUID = 1L;
+	
+	private String nombre;
+	private int duracion;
+	
+	
+	public Cancion(String nombre, int duracion) {
+		this.nombre = nombre;
+		this.duracion = duracion;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public int getDuracion() {
+		return duracion;
+	}
+	public void setDuracion(int duracion) {
+		this.duracion = duracion;
+	}
+	
+	public String toString() {
+		return this.nombre+" - "+this.duracion+" segs.";
+	}
+	
+	
 }
-
-   
-

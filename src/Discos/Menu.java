@@ -1,84 +1,67 @@
-package Discos;
+package es.juana.ser;
 
-import java.util.List;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Iterator;
 
 public class Menu {
-	 private static Scanner scanner = new Scanner(System.in);
-	    private static Disco disco = new Disco();
 
-	    public static void main(String[] args) {
-	        char opcion;
-	        do {
-	            System.out.println("\n--- Menú ---");
-	            System.out.println("a. Añadir canción al disco");
-	            System.out.println("b. Borrar canción del disco");
-	            System.out.println("c. Ordenar canciones por duración");
-	            System.out.println("d. Guardar en archivo");
-	            System.out.println("e. Cargar desde archivo");
-	            System.out.println("f. Salir");
-	            System.out.print("Selecciona una opción: ");
-	            opcion = scanner.next().charAt(0);
-
-	            switch (opcion) {
-	                case 'a':
-	                    agregarCancion();
-	                    break;
-	                case 'b':
-	                    borrarCancion();
-	                    break;
-	                case 'c':
-	                    ordenarPorDuracion();
-	                    break;
-	                case 'd':
-	                    guardarEnArchivo();
-	                    break;
-	                case 'e':
-	                    cargarDesdeArchivo();
-	                    break;
-	                case 'f':
-	                    System.out.println("Saliendo...");
-	                    break;
-	                default:
-	                    System.out.println("Opción no válida. Inténtalo de nuevo.");
-	            }
-	        } while (opcion != 'f');
-	    }
-
-	    private static void agregarCancion() {
-	        System.out.print("Ingrese el título de la canción: ");
-	        String titulo = scanner.next();
-	        System.out.print("Ingrese la duración de la canción: ");
-	        double duracion = scanner.nextDouble();
-	        Cancion cancion = new Cancion(titulo, duracion);
-	        disco.agregarCancion(cancion);
-	        System.out.println("Canción agregada al disco.");
-	    }
-
-	    private static void borrarCancion() {
-	        System.out.print("Ingrese el título de la canción que desea borrar: ");
-	        String titulo = scanner.next();
-	        disco.borrarCancion(titulo);
-	    }
-
-	    private static void ordenarPorDuracion() {
-	        disco.ordenarPorDuracion();
-	        System.out.println("Canciones ordenadas por duración.");
-	        List<Cancion> canciones = disco.getCanciones();
-	        for (Cancion cancion : canciones) {
-	            System.out.println("Título: " + cancion.getTitulo() + ", Duración: " + cancion.getDuracion());
-	        }
-	    }
-
-	    private static void guardarEnArchivo() {
-	        System.out.print("Ingrese el nombre del archivo para guardar el disco: ");
-	        String nombreArchivo = scanner.next();
-	        disco.guardarEnArchivo(nombreArchivo);
-	    }
-
-	    private static void cargarDesdeArchivo() {
-	        System.out.print("Ingrese el nombre del archivo para cargar el disco: ");
-	        String nombreArchivo = scanner.next();
-	        disco.cargarDesdeArchivo(nombreArchivo);
-	    }
+	
+	public static void main(String[] args) {
+		
+		Disco disco = generarDisco();
+		try {
+			
+			//ALMACENAR EL OBJETO
+			FileOutputStream fos = new FileOutputStream("C:\\Users\\Pablo\\Desktop\\canciones.txt");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			
+			oos.writeObject(disco);
+			
+			oos.close();
+			System.out.println("Objecto escrito correctamente");
+			
+			
+			//RECUPERAR EL OBJETO
+			
+			FileInputStream fis = new FileInputStream("C:\\Users\\Pablo\\Desktop\\canciones.txt");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			Disco discoArchivo = (Disco)ois.readObject();
+			
+			System.out.println(discoArchivo);
+			
+			
+			
+		} catch (Exception e) {
+			
+		}
+	
+		
+	}
+	
+	
+	
+	
+	
+	public static Disco generarDisco() {
+		
+		Cancion c1 = new Cancion("La gasolina", 150);
+		Cancion c2 = new Cancion("Tu jardín con enanitos", 120);
+		Cancion c3 = new Cancion("En que estrella estará", 140);
+		Cancion c4 = new Cancion("Rosas", 100);
+		Cancion c5 = new Cancion("Si tu novia te deja solo", 210);
+		Cancion c6 = new Cancion("Sin noticias de holanda", 115);
+		
+		Cancion[] array_canciones = {c1, c2, c3, c4, c5, c6};
+		Disco disco = new Disco(array_canciones);
+		return disco;
+		
+	}
+	
 }
