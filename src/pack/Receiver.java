@@ -14,6 +14,7 @@ public class Receiver implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	public static void main(String[] args) 
+<<<<<<< HEAD
 			throws IOException, ClassNotFoundException {
 		System.out.println("Receiver Start");
 
@@ -44,4 +45,28 @@ public class Receiver implements Serializable{
 
 
 
+=======
+    throws IOException, ClassNotFoundException {
+        System.out.println("Receiver Start");
+
+        SocketChannel sChannel = SocketChannel.open();
+        sChannel.configureBlocking(true);
+        if (sChannel.connect(new InetSocketAddress("192.168.1.58", 12345))) {
+
+            ObjectInputStream ois = 
+                     new ObjectInputStream(sChannel.socket().getInputStream());
+
+           Persona s = (Persona)ois.readObject();
+            
+            System.out.println("String is: '" + s.toString() + "'");
+        }
+
+        System.out.println("End Receiver");
+    }
+
+	
+	
+	
+	
+>>>>>>> branch 'master' of https://github.com/DavidIglesias69/TercerTrimestre
 }
